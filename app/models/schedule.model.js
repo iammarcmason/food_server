@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Food = sequelize.define('food', {
+  const Schedule = sequelize.define('schedule', {
     title: {
       type: Sequelize.STRING,
     },
@@ -11,5 +11,5 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  return Food;
+  return Schedule;
 };

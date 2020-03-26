@@ -5,7 +5,11 @@ const cors = require('cors');
 const app = express();
 
 const db = require('./app/models');
-db.sequelize.sync();
+//db.sequelize.sync();
+
+db.sequelize.sync({ force: true }).then(() => {
+  console.log('Drop and re-sync db.');
+});
 
 var corsOptions = {
   origin: 'http://localhost:8081',
@@ -25,6 +29,7 @@ app.get('/', (req, res) => {
 });
 
 require('./app/routes/food.routes')(app);
+require('./app/routes/schedule.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

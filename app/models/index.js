@@ -20,5 +20,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.food = require('./food.model.js')(sequelize, Sequelize);
+db.schedule = require('./schedule.model.js')(sequelize, Sequelize);
 
 module.exports = db;
