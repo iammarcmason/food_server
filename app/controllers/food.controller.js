@@ -34,7 +34,14 @@ exports.create = (req, res) => {
 // Retrieve all Foods from the database.
 exports.findAll = (req, res) => {
   const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  var condition = title
+    ? {
+        [Op.or]: [
+          { title: { [Op.like]: `%${title}%` } },
+          { category: { [Op.like]: `%${title}%` } },
+        ],
+      }
+    : null;
 
   Food.findAll({ where: condition })
     .then(data => {

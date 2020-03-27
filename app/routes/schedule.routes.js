@@ -23,3 +23,4 @@ module.exports = app => {
 
   app.use('/api/schedule', router);
 };
+
